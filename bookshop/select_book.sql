@@ -8,6 +8,11 @@ SELECT bookid, bookname, publisher, price FROM book;
 SELECT DISTINCT publisher FROM book;
 
 --조건절 WHERE 사용
+--책번호가 5번이 아닌 도서를 검색하시오 <>
+SELECT *
+FROM book
+WHERE bookid <> 5; 
+
 --가격이 20000원 미만인 도서를 검색
 SELECT * 
 FROM book 
@@ -56,9 +61,10 @@ FROM book
 WHERE bookname LIKE '%축구%' AND price >= 20000;
 
 --도서를 이름순으로 정렬하시오
+--생략하면 오름차순, DESC 내림차순 
 SELECT * 
 FROM book
-ORDER BY bookname DESC;
+ORDER BY bookname;
 
 --도서를 가격의 내림차순으로 검색하고, 가격이 같으면 출판사를 오름차순 검색
 SELECT * 

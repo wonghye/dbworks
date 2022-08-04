@@ -2,7 +2,7 @@
 -- 숫자관련 함수
 -- dual은 오라클에서만 사용하는 가상 테이블
 -- 절대값 구하기
-SELECT ABS(-10)
+SELECT ABS(-10),ABS(10)
 FROM dual;
 
 --3.875를 소수 첫째자리까지 반올림한 값을 구하시오
@@ -59,3 +59,66 @@ SELECT SUBSTR(name, 1, 1) 성,
         COUNT(*) 인원
 FROM customer
 GROUP BY SUBSTR (name, 1 ,1);
+
+
+-- 날짜, 시간 함수
+-- 서점은 주문일로부터 10일 후 매출을 확정함. 각주문의 확정일자를 구하시오.
+-- 날짜에서 일수를 더할 때: date + 일 수 
+SELECT orderid 주문번호, 
+    orderdate 주문일,
+    orderdate + 10 확정
+FROM orders
+WHERE orderid <=5;
+
+-- 주문번호가 6에서 10사이인 도서의 주문일에 3개월을 더한 값을 구하시오.
+-- 개월 더하기 : ADD_MONTHS(날짜, 개월수 )
+SELECT orderid 주문번호, orderdate 주문일,
+    ADD_MONTHS(orderdate,3) 더하기_결과,
+    ADD_MONTHS(orderdate,-3) 빼기_결과
+FROM orders
+WHERE orderid BETWEEN 6 AND 10;
+
+-- 총 개월수 : MONTHS_BETWEEN(종료일, 시작일)
+-- 주문번호가 10인 도서의 주문일로부터 오늘까지의 총 개월수를 구하시오.
+SELECT orderid 주문번호, orderdate 주문일, SYSDATE 현재일,
+    TRUNC( MONTHS_BETWEEN(SYSDATE, orderdate), 0) 총개월수
+FROM orders
+WHERE orderid = 10;
+
+--자동 타입 변환
+SELECT 1 + '2' * '1'
+FROM dual;
+
+-- 수동 타입 변환
+-- 숫자 형식 변환 (문자를 숫자로 변환)
+SELECT TO_NUMBER('250.3')
+FROM dual;
+
+-- 날짜 형식: 날짜 문자열을 지정 형식의 날짜 타입으로 변환
+-- TO_DATE(문자열,날짜형식)
+SELECT TO_DATE('2022/06/30','YYYY/MM/DD')
+FROM dual;
+
+--날짜를 문자 형식으로 변환
+-- TO_CHAR (날짜, 날짜형식)
+SELECT TO_CHAR(SYSDATE,'YY')년도,
+    TO_CHAR(SYSDATE,'YYYY')년도_4,
+    TO_CHAR(SYSDATE,'MM')월,
+    TO_CHAR(SYSDATE,'DD')일,
+    TO_CHAR(SYSDATE,'YYYY-MM-DD')날짜
+FROM dual;
+
+--시간을 문자 형식으로 변환
+SELECT TO_CHAR(SYSDATE, 'HH24:MI:SS')시간_24,
+    TO_CHAR(SYSDATE, 'HH:MI:SS')시간_12,
+    TO_CHAR(SYSDATE, 'YYYY-MM-DD HH:MI:SS')날짜와시간
+FROM dual;
+
+-- NVL(칼럼, 치환값)함수로 NULL 처리 하기
+SELECT custid, name, address,
+        NVL(phone, '000-9000-111') phone
+FROM customer
+WHERE phone is NULL;
+
+
+

@@ -29,5 +29,6 @@ select * from t_board;
 -- 게시글 총 개수
 select count(*) total from t_board;
 
--- 행 번호로 조회 limit 행번호 , 개수 
-select * from t_board order by bnum desc limit 1 , 4;
+-- 특정한 행 조회 limit 행번호 , 개수 
+select * from t_board order by bnum desc limit 0 , 5;
+

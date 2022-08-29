@@ -32,5 +32,7 @@ VALUES ('user1', 'user123', 'Àå±×·¡', 'User');
 SELECT * FROM board2 ORDER BY bno DESC;
 SELECT * FROM users2;
 
+DELETE FROM board2 WHERE bno=21;
+
 COMMIT;
 

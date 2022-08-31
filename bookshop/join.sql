@@ -43,5 +43,13 @@ AND book.price = 20000;
 --도서를 구매하지 않은 고객을 포함하여 
 -- 고객의 이름과 고객이 주문한 도서의 판매 가격을 구하시오
 SELECT customer.name, orders.saleprice
-FROM customer LEFT OUTER JOIN orders
+FROM customer 
+    LEFT OUTER JOIN orders
     ON customer.custid = orders.custid;
+
+-- (inner) join : 조건이 일치하는 쿼리의 결과를 출력
+-- 고객의 이름과 고객이 주문한 도서의 판매 가격을 구하시오
+SELECT customer.name, orders.saleprice
+FROM customer 
+    INNER JOIN orders
+    ON customer.custid = orders.custid;    

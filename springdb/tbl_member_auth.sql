@@ -16,6 +16,14 @@ CREATE TABLE tbl_member_auth(
     REFERENCES tbl_member(userid)
 );
 
+-- 외부 조인 : 특정 member의 회원정보와 권한 정보를 출력
+SELECT mem.userid, userpw, username, enabled, regdate, updatedate, auth
+FROM tbl_member mem 
+    LEFT OUTER JOIN tbl_member_auth auth
+    ON mem.userid = auth.userid
+WHERE mem.userid = 'admin90';    
+
+
 SELECT * FROM tbl_member;
 SELECT * FROM tbl_member_auth;
 

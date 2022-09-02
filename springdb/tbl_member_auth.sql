@@ -13,7 +13,7 @@ CREATE TABLE tbl_member_auth(
     auth VARCHAR2(50) NOT NULL,
     userid  VARCHAR2(50) NOT NULL,
     CONSTRAINT fk_member_auth FOREIGN KEY (userid)
-    REFERENCES tbl_member(userid)
+    REFERENCES tbl_member(userid) ON DELETE CASCADE
 );
 
 -- 외부 조인 : 특정 member의 회원정보와 권한 정보를 출력

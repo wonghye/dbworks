@@ -23,11 +23,19 @@ FROM tbl_member mem
     ON mem.userid = auth.userid
 WHERE mem.userid = 'admin10';    
 
+-- 전체검색
+SELECT mem.userid, mem.username, mem.regdate, auth.auth
+FROM tbl_member mem, tbl_member_auth auth
+WHERE mem.userid = auth.userid;  -- 기본키과 외래키로 찾음
 
 SELECT * FROM tbl_member ORDER BY regdate DESC;
+SELECT * FROM tbl_member ORDER BY userpw;
 SELECT * FROM tbl_member_auth;
 
-DELETE tbl_member WHERE userid = 'cloud';
+--관리자 권한 변경
+UPDATE tbl_member_auth SET auth='ROLE_ADMIN' WHERE userid='admin';
+
+DELETE tbl_member WHERE userid = 'admin';
 DELETE tbl_member_auth WHERE userid = 'cloud';
 
 DROP TABLE tbl_member;

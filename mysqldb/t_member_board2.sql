@@ -26,5 +26,8 @@ insert into t_board2 values (1, '제목입니다.', '글 내용입니다', defau
 select * from t_member2;
 select * from t_board2;
 
+use javaweb;
+
+
 drop table t_member2;
 drop table t_board2;

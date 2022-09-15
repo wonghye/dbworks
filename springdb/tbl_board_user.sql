@@ -53,9 +53,9 @@ SELECT * FROM
     SELECT /*+ INDEX(tbl_board pk board) */
     ROWNUM rn, bno, title, writer, content, regdate, updatedate, cnt
     FROM tbl_board
-    WHERE ROWNUM <= (1 * 10)
+    WHERE ROWNUM <= (2 * 10)
 )
-WHERE rn > (1 - 1) * 10;
+WHERE rn > (2 - 1) * 10;  -- 2는 page
  
  
 -- 자동번호
@@ -81,8 +81,9 @@ INSERT INTO tbl_user
 VALUES ('user1','user123','장그래','User');
 
 
-SELECT * FROM tbl_board;
+SELECT * FROM tbl_board ORDER BY regdate DESC;
 SELECT * FROM tbl_user;
+SELECT * FROM tbl_member;
 
 DROP TABLE tbl_board;
 DROP SEQUENCE seq;

@@ -1,24 +1,30 @@
 -- 유머 게시판
 CREATE TABLE tbl_humor(
-    bno NUMBER(5) PRIMARY KEY,
+    bno NUMBER(5),
     title VARCHAR2(200),
     writer VARCHAR2(20),
     content VARCHAR2(2000),
     regdate DATE DEFAULT SYSDATE,
+    updatedate DATE DEFAULT SYSDATE,
     cnt NUMBER(5) DEFAULT 0,
     likeNum NUMBER(5) DEFAULT 0
 );
 
+ALTER TABLE tbl_humor ADD CONSTRAINT pk_humor PRIMARY KEY(bno);
+
 -- 공포 게시판
 CREATE TABLE tbl_horror(
-    bno NUMBER(5) PRIMARY KEY,
+    bno NUMBER(5),
     title VARCHAR2(200),
     writer VARCHAR2(20),
     content VARCHAR2(2000),
     regdate DATE DEFAULT SYSDATE,
+    updatedate DATE DEFAULT SYSDATE,
     cnt NUMBER(5) DEFAULT 0,
     likeNum NUMBER(5) DEFAULT 0
 );
+
+ALTER TABLE tbl_horror ADD CONSTRAINT pk_horror PRIMARY KEY(bno);
 
 -- tbl_member 테이블 생성
 CREATE TABLE tbl_member(
@@ -57,11 +63,12 @@ DROP TABLE tbl_member_auth;
 
 COMMIT;
 
+DROP SEQUENCE horrorSeq;
 
---자동 번호
-CREATE SEQUENCE seq;
-CREATE SEQUENCE humorSeq; --유머 자동 번호
-CREATE SEQUENCE horrorSeq; -- 호러 자동 번호
+--시퀀스 생성
+CREATE SEQUENCE humorSeq;
+CREATE SEQUENCE horrorSeq;
+
 
 --게시글 추가
 INSERT INTO tbl_board(bno, title, writer, content) 
@@ -80,5 +87,6 @@ SELECT * FROM tbl_horror;
 SELECT * FROM tbl_member;
 
 DROP TABLE tbl_humor;
+DROP TABLE tbl_horror;
 
 COMMIT;

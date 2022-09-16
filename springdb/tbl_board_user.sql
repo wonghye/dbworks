@@ -12,6 +12,14 @@
  ALTER TABLE tbl_board ADD CONSTRAINT pk_board
  PRIMARY KEY(bno);
  
+ -- 더미 데이터
+ INSERT INTO tbl_board (bno, title, writer, content) VALUES (seq.NEXTVAL,'테스트 제목','admin','테스트내용입니다');
+ 
+ --재귀 복사
+ INSERT INTO tbl_board (bno, title, writer, content) SELECT seq.NEXTVAL, title, writer, content
+ FROM tbl_board;
+ 
+ 
  --BNO은 삭제되면 번호가 중간에서 비워짐
  --ROWNUM 실제 칼럼은 아니지만 (VIEW) 실제 (원래) 데이터를 카운트하여 출력해줌
 SELECT ROWNUM bno, title, writer, content FROM tbl_board
@@ -53,9 +61,9 @@ SELECT * FROM
     SELECT /*+ INDEX(tbl_board pk board) */
     ROWNUM rn, bno, title, writer, content, regdate, updatedate, cnt
     FROM tbl_board
-    WHERE ROWNUM <= (2 * 10)
+    WHERE ROWNUM <= (1 * 10)
 )
-WHERE rn > (2 - 1) * 10;  -- 2는 page
+WHERE rn > (1 - 1) * 10;  -- 2는 page
  
  
 -- 자동번호

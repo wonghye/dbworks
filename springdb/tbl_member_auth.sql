@@ -28,6 +28,7 @@ SELECT mem.userid, mem.username, mem.regdate, auth.auth
 FROM tbl_member mem, tbl_member_auth auth
 WHERE mem.userid = auth.userid;  -- 기본키과 외래키로 찾음
 
+
 SELECT * FROM tbl_member ORDER BY regdate DESC;
 SELECT * FROM tbl_member ORDER BY userpw;
 SELECT * FROM tbl_member_auth;

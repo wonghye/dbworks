@@ -1,4 +1,4 @@
--- 0914 수정
+-- 0919 수정 + 댓글 추가 
  CREATE TABLE tbl_board(
     bno NUMBER(5),
     title VARCHAR2(200) NOT NULL,

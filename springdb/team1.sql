@@ -82,7 +82,7 @@ VALUES (horrorSeq.nextval, '호러', '무서움', '잘 부탁드립니다.');
 
  -- 더미 데이터
  INSERT INTO tbl_humor (bno, title, writer, content) VALUES (humorSeq.nextval, '개웃겨','admin','테스트내용입니다');
-  INSERT INTO tbl_horror (bno, title, writer, content) VALUES (horrorSeq.nextval, '충격 실화 이야기!','admin','테스트내용입니다');
+  INSERT INTO tbl_horror (bno, title, writer, content) VALUES (horrorSeq.nextval, '충격실화 인신매매 당할뻔한 썰','','테스트내용입니다');
  --재귀 복사
  INSERT INTO tbl_humor (bno, title, writer, content) SELECT humorSeq.nextval, title, writer, content
  FROM tbl_humor;
@@ -94,6 +94,9 @@ SELECT * FROM tbl_board;
 SELECT * FROM tbl_humor;
 SELECT * FROM tbl_horror;
 SELECT * FROM tbl_member;
+
+DELETE FROM tbl_humor;
+DELETE FROM tbl_horror;
 
 DROP TABLE tbl_humor;
 DROP TABLE tbl_horror;

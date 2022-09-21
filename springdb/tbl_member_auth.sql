@@ -34,7 +34,8 @@ SELECT * FROM tbl_member ORDER BY userpw;
 SELECT * FROM tbl_member_auth;
 
 --관리자 권한 변경
-UPDATE tbl_member_auth SET auth='ROLE_ADMIN' WHERE userid='admin';
+UPDATE tbl_member_auth SET auth='ROLE_ADMIN' WHERE userid='cloud';
+UPDATE tbl_member_auth SET auth='ROLE_USER' WHERE userid='admin';
 
 DELETE tbl_member WHERE userid = 'admin';
 DELETE tbl_member_auth WHERE userid = 'cloud';

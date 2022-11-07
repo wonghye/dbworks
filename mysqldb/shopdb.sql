@@ -11,5 +11,10 @@ use shopdb;
 show tables;
 
 select * from member;
-select * from item;
-select * from item_img;
+select * from orders;
+select * from cart;
+select * from cart_item;
+select * from item order by reg_time desc;
+select * from item_img order by reg_time desc;
+select * from orders order by reg_time desc;
+select * from order_item order by reg_time desc;
